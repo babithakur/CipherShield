@@ -13,6 +13,9 @@
         android:theme="@style/Theme.CipherShield"
         tools:targetApi="31">
         <activity
+            android:name=".AddPassword"
+            android:exported="false" />
+        <activity
             android:name=".AuthenticateUser"
             android:exported="false" />
         <activity

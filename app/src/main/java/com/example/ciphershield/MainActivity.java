@@ -3,6 +3,9 @@ package com.example.ciphershield;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,8 +35,22 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+            String[] menuItems = {"Add new password", "View passwords", "Settings", "About app"};
+            int[] images = {R.drawable.add, R.drawable.view, R.drawable.settings, R.drawable.info};
+            GridView gridView = findViewById(R.id.menuView);
+            GridViewAdapter adapter = new GridViewAdapter(this, menuItems, images);
+            gridView.setAdapter(adapter);
+            gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    String option = adapter.menuNames[position];
+                    if(option.equals("Add new password")){
+                        Intent i = new Intent(MainActivity.this, AddPassword.class);
+                        startActivity(i);
+                    }
+
+                }
+            });
         }
-
-
     }
 }

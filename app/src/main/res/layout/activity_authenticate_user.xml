@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -13,13 +14,14 @@
         android:fontFamily="serif"
         android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/purple"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Where password meets security!"
         android:textColor="@color/white"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        android:fontFamily="serif-monospace"
         android:layout_gravity="center"/>
     <TextView
         android:layout_width="wrap_content"
@@ -27,6 +29,7 @@
         android:text="Enter your PIN"
         android:textSize="28sp"
         android:paddingTop="20dp"
+        android:fontFamily="serif"
         android:layout_gravity="center"/>
     <EditText
         android:layout_width="100dp"
@@ -37,14 +40,18 @@
         android:hint="XXXX"
         android:layout_gravity="center"
         android:padding="10dp"
+        android:textColorHint="@color/light_black"
         android:textColor="@color/white"
-        android:paddingBottom="20dp"/>
+        android:fontFamily="serif"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
+        android:text="Let's go"
         android:id="@+id/btnSubmitPin"
         android:textSize="24sp"
         android:fontFamily="serif"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        app:backgroundTint="@null"
+        android:background="@drawable/blue_button"
+        android:layout_marginTop="20dp"/>
 </LinearLayout>

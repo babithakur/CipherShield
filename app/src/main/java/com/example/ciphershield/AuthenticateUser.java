@@ -36,6 +36,8 @@ public class AuthenticateUser extends AppCompatActivity {
                         i.putExtra("isAuthenticated", true);
                         startActivity(i);
                         finish();
+                    }else{
+                        Toast.makeText(getApplicationContext(), "Incorrect PIN. Please try again!", Toast.LENGTH_LONG).show();
                     }
                 }
             }
