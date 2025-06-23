@@ -47,8 +47,10 @@ public class MainActivity extends AppCompatActivity {
                     if(option.equals("Add new password")){
                         Intent i = new Intent(MainActivity.this, AddPassword.class);
                         startActivity(i);
+                    }else if(option.equals("View passwords")){
+                        Intent i = new Intent(MainActivity.this, ViewPasswords.class);
+                        startActivity(i);
                     }
-
                 }
             });
         }
