@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AlertDialog;
@@ -37,23 +38,27 @@ public class AddPassword extends AppCompatActivity {
                 String app_name = appName.getText().toString();
                 String uname = username.getText().toString();
                 String passwd = password.getText().toString();
-                AESEncryption encryption = new AESEncryption();
-                String enc_passwd = "";
-                try {
-                    SharedPreferences prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE);
-                    String savedPin = prefs.getString("user_pin", null);
-                    enc_passwd = encryption.encrypt(passwd, "1234");
-                    helper.addPassword(app_name, uname, enc_passwd);
-                    AlertDialog.Builder builder = new AlertDialog.Builder(AddPassword.this);
-                    builder.setTitle("CipherShield");
-                    builder.setMessage("Your password was added!");
-                    builder.setPositiveButton("OK", (dialog, which) -> {
-                        dialog.dismiss();
-                    });
-                    AlertDialog alert = builder.create();
-                    alert.show();
-                }catch (Exception ex){
-                    ex.printStackTrace();
+                if (app_name.isEmpty() || uname.isEmpty() || passwd.isEmpty()) {
+                    Toast.makeText(getApplicationContext(), "Please enter proper details.", Toast.LENGTH_SHORT).show();
+                } else {
+                    AESEncryption encryption = new AESEncryption();
+                    String enc_passwd = "";
+                    try {
+                        SharedPreferences prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE);
+                        String savedPin = prefs.getString("user_pin", null);
+                        enc_passwd = encryption.encrypt(passwd, "1c09a2ef52d471d75474a0236e05164d");
+                        helper.addPassword(app_name, uname, enc_passwd);
+                        AlertDialog.Builder builder = new AlertDialog.Builder(AddPassword.this);
+                        builder.setTitle("CipherShield");
+                        builder.setMessage("Your password was added!");
+                        builder.setPositiveButton("OK", (dialog, which) -> {
+                            dialog.dismiss();
+                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    } catch (Exception ex) {
+                        ex.printStackTrace();
+                    }
                 }
             }
         });

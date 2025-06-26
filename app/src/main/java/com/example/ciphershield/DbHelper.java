@@ -39,4 +39,33 @@ public class DbHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(query, null);
         return cursor;
     }
+
+    public int getPasswordId(String appName, String username) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT id FROM passwords WHERE application_name = ? AND username = ? LIMIT 1";
+        Cursor cursor = db.rawQuery(query, new String[]{appName, username});
+
+        int id = -1; // or any sentinel value you prefer
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+        }
+        cursor.close();
+        return id;
+    }
+
+    public boolean deletePassword(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        int result = db.delete("passwords", "id=?", new String[]{id});
+        return result > 0;
+    }
+
+    public boolean updatePassword(String applicationName, String username, String password, int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("application_name", applicationName);
+        values.put("username", username);
+        values.put("password", password);
+        int result = db.update("passwords",values, "id=?", new String[]{String.valueOf(id)});
+        return result > 0;
+    }
 }

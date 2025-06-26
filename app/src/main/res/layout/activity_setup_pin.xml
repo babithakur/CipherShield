@@ -13,7 +13,7 @@
         android:fontFamily="serif"
         android:layout_gravity="center"
         android:paddingTop="20dp"
-        android:textColor="@color/white"/>
+        android:textColor="@color/purple"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,14 +29,15 @@
         android:paddingTop="20dp"
         android:layout_gravity="center"/>
     <EditText
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:id="@+id/userPin"
         android:textSize="36sp"
-        android:hint="XXXX"
+        android:hint="xxxx"
         android:layout_gravity="center"
         android:padding="10dp"
+        android:textColorHint="@color/hint_color"
         android:textColor="@color/white"
         android:paddingBottom="20dp"/>
     <Button
@@ -46,5 +47,6 @@
         android:id="@+id/btnSetPin"
         android:textSize="24sp"
         android:fontFamily="serif"
+        android:background="@drawable/blue_button"
         android:layout_gravity="center"/>
 </LinearLayout>

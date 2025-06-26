@@ -32,15 +32,15 @@
         android:fontFamily="serif"
         android:layout_gravity="center"/>
     <EditText
-        android:layout_width="100dp"
+        android:layout_width="110dp"
         android:layout_height="wrap_content"
         android:inputType="number"
         android:id="@+id/userPin"
         android:textSize="36sp"
-        android:hint="XXXX"
+        android:hint="xxxx"
         android:layout_gravity="center"
         android:padding="10dp"
-        android:textColorHint="@color/light_black"
+        android:textColorHint="@color/hint_color"
         android:textColor="@color/white"
         android:fontFamily="serif"/>
     <Button

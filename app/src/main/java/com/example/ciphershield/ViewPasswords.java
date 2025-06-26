@@ -26,14 +26,12 @@ public class ViewPasswords extends AppCompatActivity {
         ArrayList<String> usernames = new ArrayList<>();
         ArrayList<String> passwords = new ArrayList<>();
         AESEncryption encryption = new AESEncryption();
-        SharedPreferences prefs = getSharedPreferences("auth_prefs", MODE_PRIVATE);
-        String savedPin = prefs.getString("user_pin", null);
         while(cursor.moveToNext()){
             appNames.add(cursor.getString(1));
             usernames.add(cursor.getString(2));
             try{
                 String passwd = cursor.getString(3);
-                String dec_passwd = encryption.decrypt(passwd, savedPin);
+                String dec_passwd = encryption.decrypt(passwd, "1c09a2ef52d471d75474a0236e05164d");
                 passwords.add(dec_passwd);
             }catch(Exception ex){
                 ex.printStackTrace();
